@@ -4,7 +4,7 @@ export interface Project {
   onsentToShareRecieved: string;
   country: string;
   email: string;
-  intanetID: string;
+  intranetID: string;
   kimba: string;
   name: string;
   projectDescription: string;
@@ -21,7 +21,7 @@ export interface ParsedProject {
   comments: string;
   country: string;
   email: string;
-  intanetID: string;
+  intranetID: string;
   name: string;
   projectDescription: string;
   projectTitle: string;
