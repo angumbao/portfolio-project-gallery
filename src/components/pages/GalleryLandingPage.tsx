@@ -1,4 +1,5 @@
 import { Box, Flex, Text, useMantineTheme } from "@mantine/core";
+import { motion } from "framer-motion";
 
 const LandingHeroBanner = () => {
   const theme = useMantineTheme();
@@ -23,21 +24,29 @@ const LandingHeroBanner = () => {
         >
           PORTFOLIO SHOWCASE
         </Text>
-        <Box
-          bg={"blue.7"}
-          py={"sm"}
-          px={"xl"}
-          style={{
+        <motion.div
+          animate={{
+            background: theme.colors.blue[7],
+            paddingTop: "1em",
+            paddingBottom: "1em",
+            paddingLeft: "2em",
+            paddingRight: "2em",
+            width: "22em",
+            height: "9em",
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%) rotate(-15deg)",
           }}
+          style={{
+            maxHeight: "9em",
+            maxWidth: "22em",
+          }}
         >
           <Text c="yellow.6" fz="5em" fw={700} ta="center" fs="italic">
             ALX SE
           </Text>
-        </Box>
+        </motion.div>
       </div>
       <Flex
         maw="52%"
@@ -66,7 +75,7 @@ const LandingHeroBanner = () => {
 };
 
 const AnimatedHeroText = () => {
-  return <></>;
+  return <motion.div></motion.div>;
 };
 
 const GalleryLandingPage = () => {
