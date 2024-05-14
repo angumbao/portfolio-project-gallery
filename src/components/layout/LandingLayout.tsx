@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Box, Container } from "@mantine/core";
 import NavBar from "../common/NavBar";
 import { Outlet } from "react-router-dom";
 import Footer from "../common/Footer";
@@ -9,7 +9,9 @@ const LandingLayout = () => {
     <ThemeProvider>
       <Box mih="calc(100vh - 112px)" bg="blue.7">
         <NavBar />
-        <Outlet />
+        <Container size={"lg"}>
+          <Outlet />
+        </Container>
       </Box>
       <Footer />
     </ThemeProvider>

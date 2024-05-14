@@ -74,7 +74,7 @@ const LandingHeroBanner = () => {
       <Space h="xl" />
       <Space h="xl" />
       <Flex
-        maw="50%"
+        w="100%"
         m="auto"
         direction={{
           base: "column",
@@ -82,10 +82,10 @@ const LandingHeroBanner = () => {
           md: "row",
         }}
         align={"center"}
-        justify={"space-between"}
+        justify={isMobile ? "space-around" : "space-between"}
       >
         <Text
-          w={isMobile ? "100%" : "60%"}
+          w={isMobile ? "90%" : "60%"}
           fz={{ base: "md", md: "xl" }}
           c="white"
           fw={isMobile ? 400 : 600}
@@ -168,7 +168,7 @@ const AnimatedHeroText = () => {
         transition={{ duration: 0.5, ease: "easeInOut" }}
         style={{
           color: theme.colors.green[6],
-          fontSize: isMobile ? "4em" : "5em",
+          fontSize: isMobile ? "3.5em" : "5em",
           fontWeight: 700,
           textAlign: "center",
           lineHeight: "1.4em",
