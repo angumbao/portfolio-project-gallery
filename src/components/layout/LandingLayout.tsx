@@ -1,17 +1,18 @@
-import { Box, MantineProvider } from "@mantine/core";
+import { Box } from "@mantine/core";
 import NavBar from "../common/NavBar";
 import { Outlet } from "react-router-dom";
 import Footer from "../common/Footer";
+import ThemeProvider from "../ThemeProvider";
 
 const LandingLayout = () => {
   return (
-    <MantineProvider>
-      <Box>
+    <ThemeProvider>
+      <Box pb={"xl"} mih="calc(100vh - 112px)">
         <NavBar />
         <Outlet />
-        <Footer />
       </Box>
-    </MantineProvider>
+      <Footer />
+    </ThemeProvider>
   );
 };
 
