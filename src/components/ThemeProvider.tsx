@@ -55,6 +55,19 @@ export const alxGreen: any = [
   "#2E865D",
 ];
 
+const alxYellow: any = [
+  "#F9F8F4",
+  "#ECE7D4",
+  "#E5DBB2",
+  "#E4D38E",
+  "#EBD066",
+  "#FBD437",
+  "#E4C030",
+  "#C8AA30",
+  "#A69139",
+  "#8C7C3D",
+];
+
 export default function ThemeProvider(props: { children: React.ReactNode }) {
   const { children } = props;
 
@@ -70,6 +83,7 @@ export default function ThemeProvider(props: { children: React.ReactNode }) {
       slate: slate,
       blue: alxBlue,
       green: alxGreen,
+      yellow: alxYellow,
     },
     primaryColor: "slate",
     lineHeights: {
