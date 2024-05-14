@@ -1,15 +1,15 @@
-import { MantineProvider } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 import NavBar from "../common/NavBar";
 import Footer from "../common/Footer";
+import ThemeProvider from "../ThemeProvider";
 
 const ProjectsLayout = () => {
   return (
-    <MantineProvider>
+    <ThemeProvider>
       <NavBar />
       <Outlet />
       <Footer />
-    </MantineProvider>
+    </ThemeProvider>
   );
 };
 
