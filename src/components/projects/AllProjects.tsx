@@ -1,6 +1,9 @@
-import { Box, Space, Text, Title } from "@mantine/core";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Box, LoadingOverlay, Space, Text, Title } from "@mantine/core";
 import ProjectPageHeroText from "./ProjectPageHeroText";
 import { Carousel } from "@mantine/carousel";
+import { useEffect } from "react";
+import useProjectsData from "../../hooks/useProjectData";
 
 const ProjectSection = (props: {
   title: string;
@@ -30,6 +33,12 @@ const ProjectSection = (props: {
 };
 
 const AllProjects = () => {
+  const { csvData: data, loading, error } = useProjectsData();
+
+  useEffect(() => {
+    if (data) console.log(data);
+  }, [data]);
+
   return (
     <div>
       <Space h="xl" />
@@ -42,6 +51,10 @@ const AllProjects = () => {
         visionary designs, you'll gain invaluable insights into the caliber and
         potential of our graduates making real world impact with their skills.
       </Text>
+      {/* <ProjectSection />
+			<ProjectSection /> */}
+      {loading ? <LoadingOverlay /> : <>Got data!</>}
+      {error && <>Unable to fetch data!</>}
     </div>
   );
 };

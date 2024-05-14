@@ -18,7 +18,7 @@ function csvToArr(stringVal: string, splitter: string) {
 
 const useProjectsData = () => {
   const [csvData, setCsvData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -26,7 +26,6 @@ const useProjectsData = () => {
   }, []);
 
   const fetchCSVData = async () => {
-    setLoading(true);
     try {
       const res = await fetch(import.meta.env.VITE_ALT_URL);
       console.log(res);
