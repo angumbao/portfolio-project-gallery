@@ -13,6 +13,7 @@
     "@mantine/core": "^7.8.0",
     "@mantine/hooks": "^7.8.0",
     "@mantine/modals": "^7.8.0",
+    "framer-motion": "^11.2.0",
     "helmet": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
