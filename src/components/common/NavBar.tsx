@@ -19,7 +19,7 @@ const NavBar = () => {
   return (
     <div>
       <Box bg={"blue.7"}>
-        <Container size="lg" h={70}>
+        <Container size="lg" h={90}>
           <Flex align={"center"} w="100%" h="100%" justify={"space-between"}>
             <Group h="100%">
               <Link to="/" style={{ textDecoration: "none" }}>
