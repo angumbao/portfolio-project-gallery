@@ -1,11 +1,24 @@
-import { Box, Flex, Text, useMantineTheme } from "@mantine/core";
+import { Box, Button, Flex, Space, Text, useMantineTheme } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LandingHeroBanner = () => {
   const theme = useMantineTheme();
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const navigate = useNavigate();
 
   return (
-    <Box mih="60vh" bg="blue.7">
+    <Box
+      mih="80%"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <div
         style={{
           position: "relative",
@@ -13,7 +26,7 @@ const LandingHeroBanner = () => {
       >
         <Text
           pt="xl"
-          fz="13em"
+          fz={{ base: "4em", md: "13em" }}
           fw={700}
           fs="italic"
           c={"green.5"}
@@ -31,31 +44,53 @@ const LandingHeroBanner = () => {
             paddingBottom: "1em",
             paddingLeft: "2em",
             paddingRight: "2em",
-            width: "22em",
-            height: "9em",
+            width: isMobile ? "14em" : "22em",
+            height: isMobile ? "4em" : "9em",
             position: "absolute",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%) rotate(-15deg)",
           }}
           style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             maxHeight: "9em",
             maxWidth: "22em",
           }}
         >
-          <Text c="yellow.6" fz="5em" fw={700} ta="center" fs="italic">
+          <Text
+            c="yellow.6"
+            fz={{ base: "2em", md: "5em" }}
+            fw={700}
+            ta="center"
+            fs="italic"
+          >
             ALX SE
           </Text>
         </motion.div>
       </div>
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
       <Flex
-        maw="52%"
+        maw="50%"
         m="auto"
-        style={{
-          outline: "1px solid yellow",
+        direction={{
+          base: "column",
+          sm: "column",
+          md: "row",
         }}
+        align={"center"}
+        justify={"space-between"}
       >
-        <Text w="60%" fz="xl" c="white" fw={600} lh="1.8em">
+        <Text
+          w={isMobile ? "100%" : "60%"}
+          fz={{ base: "md", md: "xl" }}
+          c="white"
+          fw={isMobile ? 400 : 600}
+          lh="1.8em"
+        >
           As part of our graduation criteria, ALX Software Engineering Learners
           undertake the challenge of crafting portfolio projects that epitomise
           their capabilities and potential.
@@ -70,19 +105,87 @@ const LandingHeroBanner = () => {
         </Text>
         <AnimatedHeroText />
       </Flex>
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
+      <Button
+        ta="center"
+        color="green.7"
+        size="xl"
+        onClick={() => {
+          navigate("/projects");
+        }}
+      >
+        View All Portfolio Projects
+      </Button>
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
     </Box>
   );
 };
 
 const AnimatedHeroText = () => {
-  return <motion.div></motion.div>;
+  const phrases = useMemo(
+    () => ["4k+ PROJECTS BUILT", "SINCE 2022", "ACROSS 14 COHORTS"],
+    []
+  );
+  const [phrase, setPhrase] = useState(phrases[0]);
+  const theme = useMantineTheme();
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // set phrase based on order of phrases
+      const currentIndex = phrases.indexOf(phrase);
+      const nextIndex =
+        currentIndex === phrases.length - 1 ? 0 : currentIndex + 1;
+      setPhrase(phrases[nextIndex]);
+    }, 2300);
+
+    return () => clearInterval(interval);
+  }, [phrase, phrases]);
+
+  return (
+    <motion.div
+      style={{
+        maxWidth: "27%",
+        height: "24em",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <motion.p
+        key={phrase}
+        initial={{ opacity: 0.2, scale: 0.4, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0.2, scale: 0.8, y: -40 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        style={{
+          color: theme.colors.green[6],
+          fontSize: isMobile ? "4em" : "5em",
+          fontWeight: 700,
+          textAlign: "center",
+          lineHeight: "1.4em",
+          padding: "1em",
+        }}
+      >
+        {phrase}
+      </motion.p>
+    </motion.div>
+  );
 };
 
 const GalleryLandingPage = () => {
   return (
-    <>
+    <Box>
       <LandingHeroBanner />
-    </>
+    </Box>
   );
 };
 

@@ -7,7 +7,7 @@ import ThemeProvider from "../ThemeProvider";
 const LandingLayout = () => {
   return (
     <ThemeProvider>
-      <Box pb={"xl"} mih="calc(100vh - 112px)">
+      <Box mih="calc(100vh - 112px)" bg="blue.7">
         <NavBar />
         <Outlet />
       </Box>
