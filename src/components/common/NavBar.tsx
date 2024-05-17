@@ -29,6 +29,11 @@ const NavBar = () => {
               </Link>
             </Group>
             <Group h="100%" visibleFrom="sm">
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Text c="white" fz="lg" fw={700}>
+                  Home
+                </Text>
+              </Link>
               <Menu
                 trigger="click-hover"
                 closeOnClickOutside
@@ -44,14 +49,11 @@ const NavBar = () => {
                   <Menu.Item component="a" href="/projects">
                     All Projects
                   </Menu.Item>
-                  <Menu.Item component="a" href="/projects/ecommerce-projects">
+                  <Menu.Item component="a" href="/projects/e-commerce">
                     E-Commerce Projects
                   </Menu.Item>
-                  <Menu.Item
-                    component="a"
-                    href="/projects/business-solution-projects"
-                  >
-                    E-Commerce Projects
+                  <Menu.Item component="a" href="/projects/business-solution">
+                    Business Solution Projects
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -87,7 +89,7 @@ const NavBar = () => {
               </Text>
             </Link>
             <Link
-              to="/projects/ecommerce-projects"
+              to="/projects/e-commerce"
               style={{
                 textDecoration: "none",
               }}
@@ -97,7 +99,7 @@ const NavBar = () => {
               </Text>
             </Link>
             <Link
-              to="/projects/business-solution-projects"
+              to="/projects/business-solution"
               style={{
                 textDecoration: "none",
               }}
