@@ -4,6 +4,8 @@ import GalleryLandingPage from "./components/pages/GalleryLandingPage";
 import AllProjects from "./components/projects/AllProjects";
 import FAQPage from "./components/pages/FAQPage";
 import ProjectsLayout from "./components/layout/ProjectsLayout";
+import Ecommerce from "./components/projects/Ecommerce";
+import BusinessSolution from "./components/projects/BusinessSolution";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,6 +17,12 @@ function App() {
           path: "/",
           element: <GalleryLandingPage />,
         },
+      ],
+    },
+    {
+      path: "/faq",
+      element: <ProjectsLayout />,
+      children: [
         {
           path: "/faq",
           element: <FAQPage />,
@@ -29,12 +37,11 @@ function App() {
           path: "/projects",
           element: <AllProjects />,
         },
-        // TODO: import project page template and pass relevant props
-        // { path: "/projects/e-commerce-projects", element: <EcommerceProjects /> },
-        // {
-        //   path: "/projects/business-solution-projects",
-        //   element: <BusinessSolutionProjects />,
-        // },
+        { path: "/projects/e-commerce", element: <Ecommerce /> },
+        {
+          path: "/projects/business-solution",
+          element: <BusinessSolution />,
+        },
       ],
     },
   ]);
