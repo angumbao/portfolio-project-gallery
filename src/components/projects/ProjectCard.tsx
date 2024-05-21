@@ -98,13 +98,13 @@ const ProjectCard = (props: { project: ParsedProject }) => {
         </Flex>
         {project.projectDescription && (
           <Tooltip
-            label={project.projectDescription}
+            label={project.projectDescription.split("+").join(", ")}
             withArrow
             multiline
             w={420}
           >
             <Text truncate mt="lg" size="sm" c="dimmed">
-              {project.projectDescription}
+              {project.projectDescription.split("+").join(", ")}
             </Text>
           </Tooltip>
         )}
