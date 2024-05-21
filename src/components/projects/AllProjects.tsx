@@ -1,33 +1,46 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Box, LoadingOverlay, Space, Text, Title } from "@mantine/core";
+import {
+  Box,
+  Flex,
+  Loader,
+  LoadingOverlay,
+  Space,
+  Text,
+  Title,
+} from "@mantine/core";
 import ProjectPageHeroText from "./ProjectPageHeroText";
-import { Carousel } from "@mantine/carousel";
+// import { Carousel } from "@mantine/carousel";
 import { useEffect } from "react";
 import useProjectsData from "../../hooks/useProjectData";
+import { ParsedProject } from "../../types/Project";
+import ProjectCard from "./ProjectCard";
+import { cleanJson } from "../../utils/parseProjectJSON";
 
-const ProjectSection = (props: {
-  title: string;
+export const ProjectSection = (props: {
+  title?: string;
   description?: string;
-  projects: {
-    teamMembers: string[];
-    title: string;
-    technologies: string[];
-    videoUrl: string;
-  }[];
+  projects: ParsedProject[];
 }) => {
   const { title, description, projects } = props;
 
   return (
     <Box>
-      <Title order={3} my="lg">
-        {title}
-      </Title>
+      {title && (
+        <Title order={3} my="lg">
+          {title}
+        </Title>
+      )}
       {description && <Text>{description}</Text>}
-      <Carousel>
+      {/* <Carousel>
         {projects.map((project, key) => {
           return <Carousel.Slide key={key}></Carousel.Slide>;
         })}
-      </Carousel>
+      </Carousel> */}
+      <Flex wrap="wrap" align="center" justify="center" gap="xl">
+        {projects.map((project, key) => {
+          return <ProjectCard key={key} project={project} />;
+        })}
+      </Flex>
     </Box>
   );
 };
@@ -53,8 +66,16 @@ const AllProjects = () => {
       </Text>
       {/* <ProjectSection />
 			<ProjectSection /> */}
-      {loading ? <LoadingOverlay /> : <>Got data!</>}
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
+      <Flex align={"center"} justify={"center"}>
+        {loading || !data ? <Loader /> : <ProjectSection projects={data} />}
+      </Flex>
       {error && <>Unable to fetch data!</>}
+      <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
     </div>
   );
 };

@@ -1,31 +1,27 @@
 export interface Project {
-  cohort: string;
-  comments: string;
-  onsentToShareRecieved: string;
-  country: string;
+  category: string;
+  consentFormLink: string;
+  consentStatus: string;
   email: string;
-  intranetID: string;
-  kimba: string;
-  name: string;
+  linkedIn: string;
   projectDescription: string;
-  projectTitle: string;
-  score: string;
-  slides: string;
+  projectName: string;
+  team: string;
+  techonologies: string;
+  timeStamp: string;
   video: string;
 }
 
 export interface ParsedProject {
-  consentToShareRecieved: boolean;
-  kimba: boolean;
-  cohort: string;
-  comments: string;
-  country: string;
+  category: string;
+  consentFormLink: string;
+  consentStatus: string;
   email: string;
-  intranetID: string;
-  name: string;
+  linkedIn: string;
   projectDescription: string;
-  projectTitle: string;
-  score: string;
-  slides: string;
+  projectName: string;
+  team: string;
+  techonologies: string;
+  timeStamp: string;
   video: string;
 }

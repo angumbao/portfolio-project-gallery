@@ -17,29 +17,33 @@ import {
 import { ParsedProject } from "../../types/Project";
 // @ts-ignore
 import VideoThumbnail from "react-video-thumbnail";
-import { IconBrandLinkedin, IconMail } from "@tabler/icons-react";
+import { IconBrandLinkedin } from "@tabler/icons-react";
 import VideoPlayer from "../common/VideoPlayer";
 import { useDisclosure } from "@mantine/hooks";
 
 const ProjectCard = (props: { project: ParsedProject }) => {
   const { project } = props;
-  const teamMemberNames = project.name.split("+");
+  const teamMemberNames = project.team.split("+");
   const teamMemberEmails = project.email.split("+");
 
   const [opened, { open, close }] = useDisclosure();
 
   const theme = useMantineTheme();
 
+  const isZoomVideo = project.video.includes("zoom");
+
   const isYoutubeVideo =
     project.video.includes("youtube") || project.video.includes("youtu.be");
   const isLoomVideo = project.video.includes("loom");
+
+  const isGoogleVideo = project.video.includes("drive.google");
 
   return (
     <Box h="auto">
       <Modal
         opened={opened}
         onClose={close}
-        title={project.projectTitle}
+        title={project.projectName}
         centered
         size={"xl"}
         overlayProps={{
@@ -69,12 +73,12 @@ const ProjectCard = (props: { project: ParsedProject }) => {
           {isYoutubeVideo && (
             <VideoPlayer
               videoSrc={project.video}
-              videoTitle={project.projectTitle}
+              videoTitle={project.projectName}
               width="100%"
               // maxHeight="30%"
             />
           )}
-          {isLoomVideo && (
+          {(isLoomVideo || isZoomVideo || isGoogleVideo) && (
             <iframe
               src={project.video}
               allowFullScreen
@@ -87,10 +91,10 @@ const ProjectCard = (props: { project: ParsedProject }) => {
           )}
         </Card.Section>
         <Flex mt="md" mb="xs" w="100%">
-          <Text w={500}>{project.projectTitle ?? "Portfolio Project"}</Text>
-          <Badge color="green.7" variant="light" w="60px">
+          <Text w={500}>{project.projectName ?? "Portfolio Project"}</Text>
+          {/* <Badge color="green.7" variant="light" w="60px">
             C{project.cohort}
-          </Badge>
+          </Badge> */}
         </Flex>
         {project.projectDescription && (
           <Tooltip
@@ -121,7 +125,7 @@ const ProjectCard = (props: { project: ParsedProject }) => {
                       ml="xs"
                       onClick={() => {
                         window.open(
-                          `mailto:${teamMemberEmails[index]}`,
+                          project.linkedIn.split("+")[index].replace(" ", ""),
                           "_blank"
                         );
                       }}
