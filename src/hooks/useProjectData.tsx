@@ -43,11 +43,6 @@ const useProjectsData = () => {
           // @ts-ignore
           item.linkedIn.startsWith("https")
       );
-      console.log(
-        "THIS IS THE DATA: ",
-        // @ts-ignore
-        validData
-      );
       // @ts-ignore
       setCsvData(cleanJson(validData));
       setLoading(false);

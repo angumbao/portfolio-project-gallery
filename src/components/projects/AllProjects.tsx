@@ -48,9 +48,9 @@ export const ProjectSection = (props: {
 const AllProjects = () => {
   const { csvData: data, loading, error } = useProjectsData();
 
-  useEffect(() => {
-    if (data) console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) console.log(data);
+  // }, [data]);
 
   return (
     <div>
