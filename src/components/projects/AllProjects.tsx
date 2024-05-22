@@ -1,20 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import {
-  Box,
-  Flex,
-  Loader,
-  LoadingOverlay,
-  Space,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Box, Flex, Loader, Space, Text, Title } from "@mantine/core";
 import ProjectPageHeroText from "./ProjectPageHeroText";
 // import { Carousel } from "@mantine/carousel";
-import { useEffect } from "react";
 import useProjectsData from "../../hooks/useProjectData";
 import { ParsedProject } from "../../types/Project";
 import ProjectCard from "./ProjectCard";
-import { cleanJson } from "../../utils/parseProjectJSON";
 
 export const ProjectSection = (props: {
   title?: string;

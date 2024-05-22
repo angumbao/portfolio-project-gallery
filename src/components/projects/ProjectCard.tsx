@@ -3,11 +3,8 @@ import {
   ActionIcon,
   Badge,
   Box,
-  Button,
   Card,
   Flex,
-  Group,
-  Image,
   Modal,
   ScrollArea,
   Text,
@@ -17,7 +14,6 @@ import {
 } from "@mantine/core";
 import { ParsedProject } from "../../types/Project";
 // @ts-ignore
-import VideoThumbnail from "react-video-thumbnail";
 import { IconBrandLinkedin } from "@tabler/icons-react";
 import VideoPlayer from "../common/VideoPlayer";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
@@ -26,7 +22,6 @@ import { motion } from "framer-motion";
 const ProjectCard = (props: { project: ParsedProject }) => {
   const { project } = props;
   const teamMemberNames = project.team.split("+");
-  const teamMemberEmails = project.email.split("+");
 
   const [opened, { open, close }] = useDisclosure();
 
@@ -138,7 +133,7 @@ const ProjectCard = (props: { project: ParsedProject }) => {
           )}
         </Box>
         <ProjectTitle inModal />
-        <Technologies inModal />
+        <Technologies />
         {project.projectDescription && (
           <Text mt="lg" size="sm" c="dimmed" my="sm">
             {project.projectDescription.split("+").join(", ")}
