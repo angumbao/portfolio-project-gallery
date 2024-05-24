@@ -9,17 +9,24 @@ import {
   Box,
   Text,
   Stack,
+  useMantineTheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [opened, { toggle, close }] = useDisclosure();
+  const theme = useMantineTheme();
 
   return (
     <div>
-      <Box bg={"blue.7"}>
-        <Container size="lg" h={90}>
+      <Box
+        bg={"white"}
+        style={{
+          borderBottom: `1px solid ${theme.colors.slate[3]}`,
+        }}
+      >
+        <Container size="lg" h={{ sm: 90, md: 70 }}>
           <Flex align={"center"} w="100%" h="100%" justify={"space-between"}>
             <Group h="100%">
               <Link to="/" style={{ textDecoration: "none" }}>
@@ -30,7 +37,7 @@ const NavBar = () => {
             </Group>
             <Group h="100%" visibleFrom="sm">
               <Link to="/" style={{ textDecoration: "none" }}>
-                <Text c="white" fz="lg" fw={700}>
+                <Text c="slate.7" fz="lg" fw={700}>
                   Home
                 </Text>
               </Link>
@@ -41,7 +48,7 @@ const NavBar = () => {
                 closeOnItemClick
               >
                 <Menu.Target>
-                  <Button mx="lg" variant="transparent" c="white" fz="lg">
+                  <Button mx="lg" variant="transparent" c="slate.7" fz="lg">
                     Portfolio Projects
                   </Button>
                 </Menu.Target>
@@ -58,7 +65,7 @@ const NavBar = () => {
                 </Menu.Dropdown>
               </Menu>
               <Link to="/faq" style={{ textDecoration: "none" }}>
-                <Text c="white" fz="lg" fw={700}>
+                <Text c="slate.7" fz="lg" fw={700}>
                   FAQ
                 </Text>
               </Link>
