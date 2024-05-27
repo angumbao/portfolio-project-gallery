@@ -19,9 +19,10 @@ const VideoPlayer = (props: {
   videoSrc: string;
   width: string | number;
   maxHeight?: string | number;
+  autoPlay?: boolean;
   position?: string;
 }) => {
-  const { videoTitle, videoSrc, maxHeight, width, position } = props;
+  const { videoTitle, videoSrc, maxHeight, width, position, autoPlay } = props;
 
   const onProviderChange = (provider: MediaProviderAdapter | null) => {
     if (isYouTubeProvider(provider)) {
@@ -40,12 +41,14 @@ const VideoPlayer = (props: {
       // @ts-ignore
       style={{
         position: position,
+        border: "none",
+        margin: "auto",
       }}
     >
       <MediaPlayer
         title={videoTitle}
         src={videoSrc}
-        autoPlay={false}
+        autoPlay={autoPlay}
         onProviderChange={onProviderChange}
       >
         <MediaProvider />

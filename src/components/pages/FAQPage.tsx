@@ -73,6 +73,8 @@ const FAQPage = () => {
   return (
     <Container>
       <Space h="xl" />
+      <Space h="xl" />
+      <Space h="xl" />
       <ProjectPageHeroText text={"Frequently Asked Questions"} />
       <Space h="xl" />
       <Accordion>

@@ -19,7 +19,13 @@ const NavBar = () => {
   const theme = useMantineTheme();
 
   return (
-    <div>
+    <div
+      style={{
+        position: "fixed",
+        width: "100%",
+        zIndex: "1",
+      }}
+    >
       <Box
         bg={"white"}
         style={{
