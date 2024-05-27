@@ -20,9 +20,9 @@ import { Carousel } from "@mantine/carousel";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 const LandingHeroBanner = () => {
-  const theme = useMantineTheme();
-  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const navigate = useNavigate();
+  // const theme = useMantineTheme();
+  // const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  // const navigate = useNavigate();
 
   return (
     <Box
